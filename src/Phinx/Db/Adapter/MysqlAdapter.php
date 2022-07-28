@@ -1442,7 +1442,7 @@ class MysqlAdapter extends PdoAdapter
             $def .= ' (';
             foreach ($columns as $column) {
                 $limit = !isset($limits[$column]) || $limits[$column] <= 0 ? '' : '(' . $limits[$column] . ')';
-                $columnSort = isset($order[$column]) ?? '';
+                $columnSort = $order[$column] ?? '';
                 $def .= '`' . $column . '`' . $limit . ' ' . $columnSort . ', ';
             }
             $def = rtrim($def, ', ');
